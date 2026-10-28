@@ -33,32 +33,74 @@ body {
 }
 
 /* MY CSS */
+:root {
+  --fs-lg: 1.25rem;
+  --fs-sm: 0.75rem;
+  --clr-primary: rgba(25,146,212,1);
+  --clr-bg: rgba(226,232,240,1);
+  --clr-bg-article: #fff;
+  --clr-text: #1f2937;
+  --clr-sidebar-text: #fff;
+  --clr-sm: rgba(99,99,99,1);
+}
 
-/* border line so, */
-/* can be removed */
-.container {
-  border: 2px solid;
+/* FONT, COLOR */
+body { 
+  font-family: "Roboto", sans-serif;
+  color: var(--clr-text);
 }
 
 .sidebar {
-  border: 2px solid green;
-}
-.header {
-  border: 2px solid red;
-  min-height: 15vh;
+  color: var(--clr-sidebar-text);
+  background-color: var(--clr-primary);
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
 }
 
-.content {
-  border: 2px solid blue;
+.card, .announcement-card, .trending-card {
+  background-color: var(--clr-bg-article);
 }
 
-.projects {
-  border: 2px dashed grey;
+h2 {
+  padding-top: 1.25rem;
+  font-size: 1.25rem;
 }
 
-.announcements {
-  border: 2px dashed grey;
+h3 {
+  font-size: 1rem;
 }
+
+.header p.sm {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.header p.lg {
+  font-size: var(--fs-lg);
+  font-weight: 800;
+}
+
+.sm {
+  font-size: var(--fs-sm);
+  color: var(--clr-sm);
+}
+
+.announcement .lg {
+  font-size: calc(var(--fs-lg) - 0.5rem);
+  font-weight: 800;
+}
+
+.trending .lg {
+  font-size: calc(var(--fs-lg) - 0.5rem);
+  font-weight: 600;
+}
+
+.header .sm {
+  color: var(--clr-text);
+  font-weight: 800;
+}
+
 
 /* LAYOUT */
 .container {
@@ -74,6 +116,7 @@ body {
   display: grid;
   grid-template-rows: auto auto 1fr;
   gap: 2em;
+  padding: 1.5em 1em;
 }
 
 .primary-nav ul,
@@ -91,12 +134,14 @@ body {
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 1.5em;
+  background-color: var(--clr-bg);
+  padding-bottom: 3em;
 }
 
 .right-side {
   display: grid;
   grid-template-rows: auto auto;
-  gap: 1.5em;
+  gap: 0.5em;
 }
 
 .header {
@@ -104,6 +149,8 @@ body {
   grid-template-rows: auto auto;
   gap: 1em;
   padding: 1em 1.5em;
+  /* padding-right: 2.5em; */
+  box-shadow: 0 1px 3px rgb(0 0 0 / .1)
 }
 
 .header-top,
@@ -111,27 +158,37 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 1.5em;
+  padding-right: 3em;
 }
 
 input[type="search"] {
   width: 100%;
 }
 
+.search {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .user-info {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 1em;
+  gap: 0.7em;
 }
 
 .greeting {
   display: grid;
   grid-template-columns: auto 1fr;
+  gap: 1em;
+  align-items: center;
 }
 
 .actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -140,15 +197,27 @@ input[type="search"] {
 .trending {
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 0.75em;
+  gap: 0.25em;
 }
 
-.content h2 {
-  margin-top: .5em;
+.trending-card {
+  padding: 1em;
+}
+
+.trending-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+  align-items: center;
+}
+
+.announcement {
+  padding: 1em;
 }
 
 .content {
-  padding: 1.5em;
+  padding-right: 2em;
+  padding-left: 1.5em;
 }
 
 .card-grid {
@@ -162,11 +231,60 @@ input[type="search"] {
   grid-template-rows: auto 1fr auto;
   gap: 0.5em;
   padding: 1.25em;
-  border: 1px solid purple;
 }
 
 .announcement-card,
 .trending-card {
-  border: 1px solid saddlebrown;
   display: grid;
+}
+
+.branding {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: .75em;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5em;
+}
+
+/* ICON */
+.primary-nav a,
+.secondary-nav a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+  text-decoration: none;
+  align-items: center;
+  color: inherit;
+  padding: 0.3em 0.5em;
+}
+
+.icon {
+  fill: currentColor;
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+}
+
+.icon-magnify {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.branding svg {
+  width: 2.5em; 
+  height: 2.5em; 
+}
+
+.avatar {
+  /* 임시 */
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #cbd5e1;
 }
